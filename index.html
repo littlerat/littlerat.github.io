@@ -4,6 +4,23 @@
     <meta charset="UTF-8" />
     <title>#moap Quotes</title>
     <script type="text/javascript">
+		function shuffle(array) {
+			let currentIndex = array.length,  randomIndex;
+
+			// While there remain elements to shuffle.
+			while (currentIndex != 0) {
+
+				// Pick a remaining element.
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex--;
+
+				// And swap it with the current element.
+				[array[currentIndex], array[randomIndex]] = [
+				array[randomIndex], array[currentIndex]];
+			}
+
+			return array;
+		}
         quoteDB=[
 		{
 			"id": 1,
@@ -5354,6 +5371,7 @@
 			"submitBy": "blink"
 		}
 	];
+		shuffle(quoteDB);
 	</script>
     <style type="text/css">
         body {
@@ -5362,6 +5380,9 @@
         }
 		a {
 			color:#aaf;
+		}
+		h2 {
+			font-size: large;
 		}
 		
 		#quoteslist > div {
@@ -5389,6 +5410,11 @@
 <body>    
         <div class="maincontainer" style="width:95%; margin-left: auto; margin-right: auto;">
             <h1>#moap quotes</h1>
+			<h2>Where to find #moap chat<br/>
+				<br/>
+				IRC: <a href="irc://irc.adelais.net/#moap">irc.adelais.net/#moap</a><br/>
+				<br/>
+				Also: <a href="https://www.reddit.com/r/MobOfAngryPeasants/">https://www.reddit.com/r/MobOfAngryPeasants/</a></h2>
             <div id="quoteslist">
             </div>
         </div>    
