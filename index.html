@@ -5429,7 +5429,8 @@
 				quoteHeader = document.createElement("h1");
 				var date = new Date(quote.time * 1000);
 				
-				quoteHeader.innerHTML = "<a href='#" + quoteNode.id + "'>#" + quote.id + "</a> by " + quote.submitBy + " at " + date.toLocaleDateString() + " " + date.toLocaleTimeString();
+				quoteHeader.innerHTML = "<a href='#" + quoteNode.id + "'>#" + quote.id + 
+					"</a> by " + quote.submitBy + " on " + date.toLocaleDateString() + " at " + date.toLocaleTimeString();
 				quoteNode.appendChild(quoteHeader);
 
                 quoteTextNode = document.createElement("p");
