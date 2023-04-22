@@ -5371,7 +5371,7 @@
 			"submitBy": "blink"
 		}
 	];
-		shuffle(quoteDB);
+		
 	</script>
     <style type="text/css">
         body {
@@ -5416,29 +5416,37 @@
 				<br/>
 				Also: <a href="https://www.reddit.com/r/MobOfAngryPeasants/">https://www.reddit.com/r/MobOfAngryPeasants/</a>
 			</h2>
+			<button onclick="return drawList(true);">shuffle</button>
 			<hr>
             <div id="quoteslist">
             </div>
         </div>    
         <script type="text/javascript">
-            var quoteList = document.getElementById("quoteslist");
-            quoteDB.forEach(quote => {
-				var quoteNode = document.createElement("div");
-                quoteNode.id = "quote_" + quote.id;
+			function drawList(shuffledb) {
+				if (shuffledb == true)
+					shuffle(quoteDB);
+				var quoteList = document.getElementById("quoteslist");
+				quoteList.innerHTML = "";
+				quoteDB.forEach(quote => {
+					var quoteNode = document.createElement("div");
+					quoteNode.id = "quote_" + quote.id;
 
-				quoteHeader = document.createElement("h1");
-				var date = new Date(quote.time * 1000);
-				
-				quoteHeader.innerHTML = "<a href='#" + quoteNode.id + "'>#" + quote.id + 
-					"</a> by " + quote.submitBy + " on " + date.toLocaleDateString() + " at " + date.toLocaleTimeString();
-				quoteNode.appendChild(quoteHeader);
+					quoteHeader = document.createElement("h1");
+					var date = new Date(quote.time * 1000);
+					
+					quoteHeader.innerHTML = "<a href='#" + quoteNode.id + "'>#" + quote.id + 
+						"</a> by " + quote.submitBy + " on " + date.toLocaleDateString() + " at " + date.toLocaleTimeString();
+					quoteNode.appendChild(quoteHeader);
 
-                quoteTextNode = document.createElement("p");
-				quoteTextNode.innerText = quote.quote;
-				quoteNode.appendChild(quoteTextNode);
+					quoteTextNode = document.createElement("p");
+					quoteTextNode.innerText = quote.quote;
+					quoteNode.appendChild(quoteTextNode);
 
-                quoteList.appendChild(quoteNode);
-			}); 
+					quoteList.appendChild(quoteNode);
+				}); 
+				return false;
+			}
+			drawList(false);
         </script>
 </body>
 </html>
